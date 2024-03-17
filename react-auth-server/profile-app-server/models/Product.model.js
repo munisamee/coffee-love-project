@@ -1,14 +1,33 @@
 // ProductModel.js
+const { Schema, model } = require("mongoose");
 
-class Product {
-    constructor(name, price, description) {
-      this.name = name;
-      this.price = price;
-      this.description = description;
-    }
-  
-    // Additional methods can be added here, such as getters, setters, or utility functions.
+const productSchema = new Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    description:{
+      type: String,
+      required: true,
+    },
+    img: {
+      type: String,
+      required: true,
+      default: 'images/default-ProductImg.jpg'
+    },
+    price: {
+      type: Number,
+      required: true,
+    },
+  },
+  {
+    // this second object adds extra properties: `createdAt` and `updatedAt`    
+    timestamps: true,
   }
-  
-  export default Product;
+);
+
+const Product = model("Product", productSchema);
+
+module.exports = Product;
   
