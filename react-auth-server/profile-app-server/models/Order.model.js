@@ -30,5 +30,7 @@ const orderSchema = new Schema(
     },
 ); 
   
-  export default orderSchema;
+const Order = model("Order", orderSchema);
+
+exports.module = Order
   
